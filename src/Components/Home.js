@@ -62,6 +62,11 @@ const Home = (props) => {
             console.log(err);
         })
     }, [])
+
+    var dateFormat = require('dateformat')
+    var today = new Date();
+    today = dateFormat(today, 'yyyy-mm-dd')
+    
     return (
         <Grid container direction="column">
             <Grid item>
@@ -80,9 +85,9 @@ const Home = (props) => {
                             <InputFeild getData={setSourceCity} label="Source City" cityData={cities} />
                             <InputFeild getData={setDestinationCity} label="Destination City" cityData={cities} />
                             <TextField id="outlined-basic" variant="outlined" className={classes.textfield}
-                                type="date" value={date} onChange={(e) => { handleChange(e) }} ></TextField>
+                                type="date" inputProps={{ min: today }} value={date} onChange={(e) => { handleChange(e) }} ></TextField>
                             <div style={{ textAlign: "center" }}>
-                                {sourceCity && destinationCity  && date
+                                {sourceCity && destinationCity && date
                                     ? <Button className={classes.root} onClick={search}>Search</Button>
                                     : <Button className={classes.root} disabled={true} onClick={search}>Search</Button>}
                             </div>
