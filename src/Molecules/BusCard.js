@@ -26,7 +26,7 @@ const BusCard = (props) => {
                             <p className="card-text"><small className="text-muted">To</small></p>
                             <h6 className="card-text">{props.dataObject.route.destination.destinationCity}</h6>
                             <p className="card-text"><small className="text-muted">Arrival Date: {props.dataObject.arrivalDate}</small></p>
-                            <p className="card-text"><small className="text-muted">Arrival Date: {props.dataObject.arrivalTime}</small></p>
+                            <p className="card-text"><small className="text-muted">Arrival Time: {props.dataObject.arrivalTime}</small></p>
                         </div>
                         <div className="col-md-2" style={{ display: "inline-block" }}>
                             <p className="card-text"><small className="text-muted">AvailableSeats</small></p>

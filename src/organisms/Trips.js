@@ -1,29 +1,12 @@
 import React, { useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
-import BusCard from '../Components/BusCard.js';
-import Header from './Header.js';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from "@material-ui/styles";
-import InputFeild from './InputFeild';
+import BusCard from '../Molecules/BusCard.js';
+import InputFeild from '../Atoms/InputFeild.js';
 import RefreshIcon from '@material-ui/icons/Refresh';
-
-const useStyles = makeStyles({
-    root: {
-        marginTop: "10px",
-        marginLeft: "10px",
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-        border: 0,
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'white',
-        height: 48,
-        padding: '0 30px',
-    },
-})
+import Custombutton from '../Atoms/Custombutton.js';
 
 const Trips = (props) => {
-    const classes = useStyles();
-    const trips = props.location.state.tripData
+    const trips = props.tripdetails
     const tempTrips = [...trips]
     const [tripData, setTripData] = React.useState([]);
     const [flag, setFlag] = React.useState('')
@@ -72,10 +55,7 @@ const Trips = (props) => {
     }
 
     return (
-        <Grid container direction="column">
-            <Grid item>
-                <Header></Header>
-            </Grid>
+        <Grid item>
             {trips.length !== 0 ?
                 <Grid container alignItems="center" direction="row">
                     <Grid item xs>
@@ -92,7 +72,7 @@ const Trips = (props) => {
                         }
                     </Grid>
                     <Grid item>
-                        <Button className={classes.root} onClick={sortBy}>Sort By Rating</Button>
+                        <Custombutton clickSearch={sortBy} buttonLabel="Sort By Rating"></Custombutton>
                     </Grid>
                 </Grid>
                 : <h4 style={{ textAlign: "center", color: "red" }}>No Trips Available</h4>
